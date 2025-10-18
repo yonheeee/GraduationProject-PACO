@@ -1,0 +1,153 @@
+.first-container {
+  min-height: 100vh;
+  max-width: 26.875rem; /* 430px */
+  min-width: 20rem; /* 320px - 최소 넓이 보장 */
+  margin: 0 auto;
+  background: linear-gradient(360deg, rgba(255, 255, 255, 0.4) 8.65%, rgba(177, 209, 255, 0.4) 42.31%, rgba(0, 71, 217, 0.4) 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem; /* 20px */
+  font-family: Arial, sans-serif;
+  position: relative;
+}
+
+
+.first-header {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-top: 2.5rem; 
+}
+
+
+.first-slogan {
+  color: #1565c0;
+  font-weight: 700;
+}
+
+.first-slogan-line1,
+.first-slogan-line2 {
+  font-size: 1.25rem; 
+  line-height: 1.4;
+}
+
+.first-slogan-line1 { 
+  margin-bottom: 0.25rem; 
+}
+
+.first-car-wrapper {
+  position: absolute;
+  top: -0.5rem; 
+  right: -0.5rem; 
+  width: auto;
+  height: auto;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.first-middle {
+  flex: 1;
+  min-height: 12.5rem; 
+}
+
+.first-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem; 
+}
+
+.first-login-button {
+  width: 100%;
+  max-width: 20rem; 
+  min-width: 18rem; 
+  height: 3.125rem; 
+  background-color: #007bff;
+  color: #ffffff;
+  border: none;
+  border-radius: 1.5625rem; 
+  font-size: 1rem; 
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.first-login-button:hover {
+  background-color: #0056b3;
+}
+
+.first-signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem; 
+}
+
+.first-signup-button {
+  width: 15rem; 
+  min-width: 12rem; 
+  height: 3.125rem; 
+  background-color: #ffffff;
+  color: #007bff;
+  border: 0.125rem solid #007bff; 
+  border-radius: 1.5625rem; 
+  font-size: 1rem; 
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.first-signup-button:hover {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.first-browse-text {
+  color: #007bff;
+  font-size: 0.875rem; 
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.first-browse-text:hover {
+  color: #0056b3;
+}
+
+.first-social-separator {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 20rem; 
+  min-width: 18rem; 
+  gap: 0.625rem; 
+  margin: 1.25rem 0; 
+}
+
+.first-separator-line {
+  flex: 1;
+  height: 0.0625rem; 
+  background-color: #cccccc;
+}
+
+.first-separator-text {
+  color: #999999;
+  font-size: 0.75rem; 
+  white-space: nowrap;
+}
+
+.first-social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+}
+
+.first-icon-image {
+  width: 1.875rem; 
+  height: 1.875rem; 
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+.first-icon-image:hover { 
+  transform: scale(1.1); 
+}
