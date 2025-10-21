@@ -1,12 +1,12 @@
 .first-container {
   min-height: 100vh;
-  max-width: 26.875rem; /* 430px */
-  min-width: 20rem; /* 320px - 최소 넓이 보장 */
+  max-width: 26.875rem; 
+  min-width: 20rem; 
   margin: 0 auto;
   background: linear-gradient(360deg, rgba(255, 255, 255, 0.4) 8.65%, rgba(177, 209, 255, 0.4) 42.31%, rgba(0, 71, 217, 0.4) 100%);
   display: flex;
   flex-direction: column;
-  padding: 1.25rem; /* 20px */
+  padding: 1.25rem; 
   font-family: Arial, sans-serif;
   position: relative;
 }
@@ -22,13 +22,13 @@
 
 
 .first-slogan {
-  color: #1565c0;
-  font-weight: 700;
+  color: #000000;
+  font-weight: 500;
 }
 
 .first-slogan-line1,
 .first-slogan-line2 {
-  font-size: 1.25rem; 
+  font-size: 1.8rem; 
   line-height: 1.4;
 }
 
@@ -63,18 +63,13 @@
   max-width: 20rem; 
   min-width: 18rem; 
   height: 3.125rem; 
-  background-color: #007bff;
+  background-color: #0054FF;
   color: #ffffff;
   border: none;
   border-radius: 1.5625rem; 
   font-size: 1rem; 
   font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.first-login-button:hover {
-  background-color: #0056b3;
 }
 
 .first-signup-container {
@@ -85,33 +80,26 @@
 }
 
 .first-signup-button {
-  width: 15rem; 
-  min-width: 12rem; 
+  width: 100%;
+  max-width: 20rem; 
+  min-width: 18rem; 
   height: 3.125rem; 
-  background-color: #ffffff;
-  color: #007bff;
-  border: 0.125rem solid #007bff; 
+  background-color: white;
+  color: #0054FF;
+  border: 1px solid #D9D9D9;
   border-radius: 1.5625rem; 
   font-size: 1rem; 
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
 }
 
-.first-signup-button:hover {
-  background-color: #007bff;
-  color: #ffffff;
-}
 
 .first-browse-text {
   color: #007bff;
-  font-size: 0.875rem; 
+  font-size: 0.8rem; 
   cursor: pointer;
-  text-decoration: underline;
-}
+  text-align: right;
 
-.first-browse-text:hover {
-  color: #0056b3;
 }
 
 .first-social-separator {
@@ -139,15 +127,11 @@
 .first-social-icons {
   display: flex;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 3rem;
 }
 
 .first-icon-image {
-  width: 1.875rem; 
-  height: 1.875rem; 
+  width: 2.3rem; 
+  height: 2.3rem; 
   cursor: pointer;
-  transition: transform 0.2s ease;
-}
-.first-icon-image:hover { 
-  transform: scale(1.1); 
 }

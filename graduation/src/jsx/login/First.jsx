@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { use } from 'react';
+import { useNavigate } from 'react-router-dom';
 import CarIcon from '../common/CarIcon';
 import googleIcon from '../../images/login/google.svg';
 import kakaoIcon from '../../images/login/kakao.svg';
@@ -6,11 +7,13 @@ import naverIcon from '../../images/login/naver.svg';
 import '../../css/login/First.css';
 
 const First = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="first-container">
      
         <div className="first-car-wrapper">
-            <CarIcon color="#0A52FF" />
+            <CarIcon color="#003FBF" />
         </div>
       <div className="first-header">
         <div className="first-slogan">
@@ -22,12 +25,20 @@ const First = () => {
       <div className="first-middle" />
 
       <div className="first-bottom">
-        <button className="first-login-button">로그인</button>
-
+        
         <div className="first-signup-container">
-          <button className="first-signup-button">회원가입</button>
-          <div className="first-browse-text">회원가입 없이 둘러보기</div>
+          <button className="first-login-button"
+          onClick={()=>navigate("/login")}
+          >
+            로그인</button>
+            
+          <button className="first-signup-button"
+          onClick={()=>navigate("/signup")}
+          >
+            회원가입</button>
         </div>
+        
+        <div className="first-browse-text">회원가입 없이 둘러보기</div>
 
         <div className="first-social-separator">
           <div className="first-separator-line" />

@@ -1,18 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import First from './jsx/login/First.jsx';
+import Signup from './jsx/login/Signup.jsx';
 
 const AppRouter = () => {
   return (
-    <Router>
+    <Router>  
       <Routes>
-
-        <Route path="/" element={<Navigate to="/login" replace />} />
-        
-
-        <Route path="/login" element={<First />} />
-        
-        <Route path="*" element={<Navigate to="/login" replace />} />
+        <Route path="/" element={<First />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="*" element={<First />} />
       </Routes>
     </Router>
   );
