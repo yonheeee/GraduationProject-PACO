@@ -1,6 +1,6 @@
 .loginpage-container {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #e6f0ff 0%, #f6fbff 40%, #ffffff 100%);
+  min-height: 100svh;
+  background: linear-gradient(180deg, #FFFFFF 21.63%, #CCE5FF 50%, #99CAFF 79.81%);
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import CarIcon from '../common/CarIcon';
 import googleIcon from '../../images/login/google.svg';
@@ -11,10 +11,8 @@ const First = () => {
 
   return (
     <div className="first-container">
-     
-        <div className="first-car-wrapper">
-            <CarIcon color="#003FBF" />
-        </div>
+    
+    <CarIcon color="#003FBF" />
       <div className="first-header">
         <div className="first-slogan">
           <div className="first-slogan-line1">복잡한 주차,</div>
@@ -28,10 +26,10 @@ const First = () => {
         
         <div className="first-signup-container">
           <button className="first-login-button"
-          onClick={()=>navigate("/login")}
+          onClick={()=>navigate("/signin")}
           >
             로그인</button>
-            
+
           <button className="first-signup-button"
           onClick={()=>navigate("/signup")}
           >

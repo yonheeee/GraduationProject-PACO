@@ -10,8 +10,7 @@ const LoginPage = ({ children, onButtonClick, buttonText = '로그인' }) => {
 
   return (
     <div className="loginpage-container">
-      
-
+      <CarIcon color="#003FBF" />
       <header className="loginpage-header">
         <button className="loginpage-back" onClick={() => navigate(-1)}>
             <img src={BackBtn} alt="뒤로가기" />

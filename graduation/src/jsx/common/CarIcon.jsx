@@ -1,8 +1,6 @@
 import React from 'react';
 
 const CarIcon = ({ color = '#0A52FF', className = '' }) => {
-  // viewBox 120x30, 가로선 y=20이 화면 전체를 가로지름
-  // 차는 우측에 배치 (중심 x≈96)
   return (
     <svg
       className={className}
@@ -11,25 +9,93 @@ const CarIcon = ({ color = '#0A52FF', className = '' }) => {
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
     >
-      {/* 바닥 가로선 */}
-      <line x1="0" y1="20" x2="120" y2="20" stroke={color} strokeWidth="0.12rem" strokeLinecap="round" />
+      {/* 바닥 가로선 (전체) */}
+      <line
+        x1="0"
+        y1="20"
+        x2="120"
+        y2="20"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
 
-      {/* 지붕(반원) */}
-      <path d="M82 14 A18 18 0 0 1 110 14" stroke={color} strokeWidth="0.125rem" fill="none" strokeLinecap="round" />
+  
+      <path
+        d="M82 14 A15 15 0 0 1 110 14"
+        stroke={color}
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
 
-      {/* 창문(내부 반원) */}
-      <path d="M88 14 A10 10 0 0 1 104 14" stroke={color} strokeWidth="0.1rem" fill="none" strokeLinecap="round" />
+      <line
+        x1="88"
+        y1="14"
+        x2="104"
+        y2="14"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
 
-      {/* 휀더 아치 */}
-      <path d="M84 14 A6 6 0 0 0 88 20" stroke={color} strokeWidth="0.125rem" fill="none" strokeLinecap="round" />
-      <path d="M104 20 A6 6 0 0 0 108 14" stroke={color} strokeWidth="0.125rem" fill="none" strokeLinecap="round" />
 
-      {/* 중앙 짧은 수직선 */}
-      <line x1="96" y1="16" x2="96" y2="20" stroke={color} strokeWidth="0.125rem" strokeLinecap="round" />
+      <path
+        d="M88 14 A9 9 0 0 1 104 14"
+        stroke={color}
+        strokeWidth="1.6"
+        fill="none"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+
+      <path
+        d="M82 14 A8 6 0 0 0 78 20"
+        stroke={color}
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+      <path
+        d="M114 20 A6 6 0 0 0 110 14"
+        stroke={color}
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+
+      {/* 중앙 기둥 */}
+      <line
+        x1="96"
+        y1="14"
+        x2="96"
+        y2="20"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
+
+      {/* 바퀴 사이 짧은 바(하부 바) */}
+      <line
+        x1="90"
+        y1="20"
+        x2="102"
+        y2="20"
+        stroke={color}
+        strokeWidth="2"
+        strokeLinecap="round"
+        vectorEffect="non-scaling-stroke"
+      />
 
       {/* 바퀴 */}
-      <circle cx="88" cy="20" r="0.28rem" fill={color} />
-      <circle cx="104" cy="20" r="0.28rem" fill={color} />
+      <circle cx="88" cy="20" r="4" fill={color} />
+      <circle cx="104" cy="20" r="4" fill={color} />
     </svg>
   );
 };
