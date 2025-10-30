@@ -1,11 +1,11 @@
 .si-greeting-container {
     text-align: center;
-    margin-bottom: 1rem;
 }
 
 .si-greeting {
     color: #003FBF;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 500;
     margin: 0;
 }
 
@@ -37,6 +37,12 @@
   letter-spacing: 0.02em;
 }
 
+.si-input-row{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
 .si-input{
   min-width: 0;  
   height: 2.75rem;

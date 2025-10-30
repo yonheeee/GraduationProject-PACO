@@ -36,7 +36,16 @@ const First = () => {
             회원가입</button>
         </div>
         
-        <div className="first-browse-text">회원가입 없이 둘러보기</div>
+        <div
+          className="first-browse-text"
+          role="button"
+          tabIndex={0}
+          onClick={() => navigate('/main')}
+          onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') navigate('/main'); }}
+          style={{ cursor: 'pointer' }}
+        >
+          회원가입 없이 둘러보기
+        </div>
 
         <div className="first-social-separator">
           <div className="first-separator-line" />

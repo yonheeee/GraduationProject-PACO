@@ -30,29 +30,35 @@ const Signin = () => {
 
       <section className="si-form">
         <label className="si-field">
-          <span className="si-label">아이디</span>
-          <input
-            type="text"
-            name="userId"
-            value={form.userId}
-            onChange={onChange}
-            placeholder="아이디"
-          />
+          <span className="si-label">ID</span>
+          <div className="si-input-row">
+            <input
+                className="si-input"
+                type="text"
+                name="userId"
+                value={form.userId}
+                onChange={onChange}
+                placeholder="아이디"
+            />
+          </div>
         </label>
 
         <label className="si-field">
-          <span className="si-label">비밀번호</span>
-          <input
-            type="password"
-            name="pw"
-            value={form.pw}
-            onChange={onChange}
-            placeholder="비밀번호"
-          />
+          <span className="si-label">PW</span>
+          <div className="si-input-row">
+                <input
+                className="si-input"
+                type="password"
+                name="pw"
+                value={form.pw}
+                onChange={onChange}
+                placeholder="비밀번호"
+            />
+          </div>
         </label>
       </section>
 
-      <div className="su-helper-links">ID 찾기 / 비밀번호 찾기</div>
+      <div className="si-helper-links">ID 찾기 / 비밀번호 찾기</div>
     </LoginPage>
   );
 };
