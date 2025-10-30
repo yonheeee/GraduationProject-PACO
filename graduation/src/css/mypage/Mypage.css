@@ -1,0 +1,32 @@
+/* 기본 rem 설정 및 폰트 초기화 */
+html { font-size: 62.5%; }
+body { margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; background-color: #f0f2f5; font-size: 1.6rem; color: #333; }
+
+/* --- 페이지 레이아웃 --- */
+.my-page-wrapper { max-width: 72rem; min-height: 100vh; margin: 0 auto; padding: 2rem; background-color: #fff; }
+
+/* --- 상단 유저 프로필 --- */
+.user-profile-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.4rem; }
+.user-info .nickname { font-size: 2.4rem; font-weight: 700; margin: 0; }
+.user-info .user-id { font-size: 1.6rem; color: #888; margin: 0.4rem 0 0; }
+.user-actions button { font-size: 1.4rem; padding: 0.8rem 1.6rem; border: 0.1rem solid #ddd; border-radius: 2rem; background-color: #fff; cursor: pointer; }
+.user-actions .btn-logout { margin-right: 0.8rem; }
+
+/* --- 네비게이션 탭 --- */
+.page-nav { display: flex; border-bottom: 0.1rem solid #eee; margin-bottom: 2.4rem; }
+.page-nav a { padding: 1.2rem 2rem; text-decoration: none; color: #888; font-weight: 500; border-bottom: 0.3rem solid transparent; margin-bottom: -0.1rem; }
+.page-nav a.active { color: #007AFF; border-bottom-color: #007AFF; font-weight: 700; }
+
+/* --- 주차장 카드 목록 --- */
+.parking-list-container { display: flex; flex-direction: column; gap: 1.6rem; }
+.parking-card { display: flex; justify-content: space-between; align-items: flex-start; background-color: #fff; padding: 2rem; border-radius: 1.6rem; box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+.parking-card:hover { transform: translateY(-0.4rem); box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.08); }
+.parking-info .parking-name-status { display: flex; align-items: center; margin-bottom: 0.8rem; }
+.parking-info .parking-name { font-size: 1.8rem; margin: 0 0.8rem 0 0; }
+.parking-info .parking-status { font-size: 1.4rem; font-weight: 700; }
+.parking-status.congested { color: #FF3B30; }
+.parking-status.available { color: #34C759; }
+.parking-status.normal { color: #FF9500; }
+.parking-info .parking-address { font-size: 1.4rem; color: #666; margin: 0 0 1.2rem; }
+.parking-info .parking-remaining { font-size: 1.4rem; color: #333; margin: 0; }
+.favorite-icon-wrapper .heart-icon { width: 2.8rem; height: 2.8rem; fill: #007AFF; }
