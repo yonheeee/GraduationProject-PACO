@@ -1,32 +1,97 @@
-/* 기본 rem 설정 및 폰트 초기화 */
-html { font-size: 62.5%; }
-body { margin: 0; padding: 0; font-family: 'Pretendard', sans-serif; background-color: #f0f2f5; font-size: 1.6rem; color: #333; }
+.my-page-wrapper{
+  width: 100%;
+  max-width: 430px; 
+  margin: 0 auto;
+  padding: 2rem;
+  background:#fff;
+  box-sizing: border-box;
+}
 
-/* --- 페이지 레이아웃 --- */
-.my-page-wrapper { max-width: 72rem; min-height: 100vh; margin: 0 auto; padding: 2rem; background-color: #fff; }
+.user-profile-header{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.4rem;
+  gap: 1.2rem;
+}
 
-/* --- 상단 유저 프로필 --- */
-.user-profile-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2.4rem; }
-.user-info .nickname { font-size: 2.4rem; font-weight: 700; margin: 0; }
-.user-info .user-id { font-size: 1.6rem; color: #888; margin: 0.4rem 0 0; }
-.user-actions button { font-size: 1.4rem; padding: 0.8rem 1.6rem; border: 0.1rem solid #ddd; border-radius: 2rem; background-color: #fff; cursor: pointer; }
-.user-actions .btn-logout { margin-right: 0.8rem; }
+.user-info .nickname{
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
 
-/* --- 네비게이션 탭 --- */
-.page-nav { display: flex; border-bottom: 0.1rem solid #eee; margin-bottom: 2.4rem; }
-.page-nav a { padding: 1.2rem 2rem; text-decoration: none; color: #888; font-weight: 500; border-bottom: 0.3rem solid transparent; margin-bottom: -0.1rem; }
-.page-nav a.active { color: #007AFF; border-bottom-color: #007AFF; font-weight: 700; }
+.user-info .user-id{
+  font-size: 1rem;
+  color:#888;
+  margin: .4rem 0 0;
+}
 
-/* --- 주차장 카드 목록 --- */
-.parking-list-container { display: flex; flex-direction: column; gap: 1.6rem; }
-.parking-card { display: flex; justify-content: space-between; align-items: flex-start; background-color: #fff; padding: 2rem; border-radius: 1.6rem; box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05); cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
-.parking-card:hover { transform: translateY(-0.4rem); box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.08); }
-.parking-info .parking-name-status { display: flex; align-items: center; margin-bottom: 0.8rem; }
-.parking-info .parking-name { font-size: 1.8rem; margin: 0 0.8rem 0 0; }
-.parking-info .parking-status { font-size: 1.4rem; font-weight: 700; }
-.parking-status.congested { color: #FF3B30; }
-.parking-status.available { color: #34C759; }
-.parking-status.normal { color: #FF9500; }
-.parking-info .parking-address { font-size: 1.4rem; color: #666; margin: 0 0 1.2rem; }
-.parking-info .parking-remaining { font-size: 1.4rem; color: #333; margin: 0; }
-.favorite-icon-wrapper .heart-icon { width: 2.8rem; height: 2.8rem; fill: #007AFF; }
+.user-actions {
+  display: flex;
+  width: 100%;
+  gap: 1rem; 
+}
+
+.user-actions button {
+  flex: 1; 
+  padding: 0.9rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #fff;
+  border: 0.1rem solid #ddd;
+  border-radius: 1.2rem;
+  cursor: pointer;
+}
+
+.page-nav{
+  display:flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 1.2rem;
+  border-bottom: .1rem solid #EEF2F6;
+  margin-bottom: 2.4rem;
+}
+
+.page-nav button{
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 1.2rem 0;
+  margin: 0;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #B6C1CE;        
+  cursor: pointer;
+  outline: none;
+}
+
+
+.page-nav button.active{
+  color: #1184FF;         
+}
+
+.page-nav button.active::after{
+  content:"";
+  position:absolute;
+  left: 50%;
+  bottom: -.1rem;        
+  transform: translateX(-50%);
+  width: 4.8rem;          
+  height: .2rem;
+  border-radius: .2rem;
+  background:#1184FF;
+}
+ 
+
+.page-nav button:not(.active):hover{
+  color:#8FA1B6;
+}
+
+.content-container{
+  padding: 0 .4rem 2rem;
+  box-sizing: border-box;
+}
