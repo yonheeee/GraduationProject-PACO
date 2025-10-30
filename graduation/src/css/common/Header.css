@@ -1,0 +1,24 @@
+.header {
+  width: 100%;
+  max-width: 430px; 
+  min-width: 320px;  
+  height: 4.375rem;
+  margin: 0 auto;
+  background: linear-gradient(180deg, #75B6FB 0%, #FDFDFD 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  gap: 5rem;
+}
+
+.icon {
+  width: 1.625rem;
+  height: 1.625rem;
+  cursor: pointer;
+}
+
+.logo {
+  height: 2.375rem;
+  object-fit: contain;
+}

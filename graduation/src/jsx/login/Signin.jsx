@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import LoginPage from '../login/LoginPage';
 import '../../css/login/Signin.css';
 
+import Eye from '../../images/login/eye.svg';
+import CloseEye from '../../images/login/closeeye.svg';
+
 const Signin = () => {
   const [form, setForm] = useState({
     userId: '',
