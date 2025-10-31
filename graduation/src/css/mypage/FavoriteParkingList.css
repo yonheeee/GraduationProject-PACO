@@ -8,18 +8,12 @@
     display: flex; 
     justify-content: space-between; 
     align-items: flex-start; 
-    background-color: #fff; 
     padding: 2rem; 
-    border-radius: 1.6rem; 
-    box-shadow: 0 0.4rem 1.2rem rgba(0, 0, 0, 0.05); 
+    background: white;
+    box-shadow: 0px 0px 8px #99CAFF;
+    border-radius: 10px; 
     cursor: pointer; 
     transition: transform 0.2s, box-shadow 0.2s; 
-}
-
-.parking-card:hover { 
-    transform: translateY(-0.4rem); 
-    box-shadow: 
-    0 0.6rem 1.6rem rgba(0, 0, 0, 0.08); 
 }
 
 .parking-info .parking-name-status { 
@@ -27,11 +21,37 @@
      align-items: center; 
      margin-bottom: 0.8rem;
 }
-.parking-info .parking-name { font-size: 1.8rem; margin: 0 0.8rem 0 0; }
-.parking-info .parking-status { font-size: 1.4rem; font-weight: 700; }
+
+.parking-info .parking-name { 
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin: 0 0.8rem 0 0; 
+}
+
+.parking-info .parking-status { 
+    font-size: 1rem; 
+    font-weight: 700; 
+}
+
 .parking-status.congested { color: #FF3B30; }
 .parking-status.available { color: #34C759; }
 .parking-status.normal { color: #FF9500; }
-.parking-info .parking-address { font-size: 1.4rem; color: #666; margin: 0 0 1.2rem; }
-.parking-info .parking-remaining { font-size: 1.4rem; color: #333; margin: 0; }
-.favorite-icon-wrapper .heart-icon { width: 2.8rem; height: 2.8rem; fill: #007AFF; }
+
+.parking-info .parking-address { 
+    font-size: 1rem; 
+    color: #666; 
+    margin: 0rem; 
+}
+
+.parking-info .parking-remaining { 
+    font-size: 1rem; 
+    font-weight: 700;
+    color: #333;
+    margin: 0; 
+}
+
+.favorite-icon-wrapper .heart-icon { 
+    width: 2.8rem; 
+    height: 2.8rem; 
+    fill: #007AFF; 
+}

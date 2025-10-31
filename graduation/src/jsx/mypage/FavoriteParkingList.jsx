@@ -36,7 +36,7 @@ const FavoriteParkingList = ({ parkingData }) => {
                         </div>
                         <p className="parking-address">{lot.address}</p>
                         <p className="parking-remaining">
-                            현재 잔여 : 총 {lot.remainparking}석
+                            🅿️현재 잔여 : 총 {lot.remainparking}석
                         </p>
                     </div>
 

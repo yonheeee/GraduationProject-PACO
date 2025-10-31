@@ -1,14 +1,14 @@
 .first-container {
-  min-height: 100svh;
-  max-width: 26.875rem; 
-  min-width: 20rem; 
+  width: 100%;
+  max-width: 430px;
   margin: 0 auto;
   background: linear-gradient(360deg, rgba(255, 255, 255, 0.4) 8.65%, rgba(177, 209, 255, 0.4) 42.31%, rgba(0, 71, 217, 0.4) 100%);
   display: flex;
   flex-direction: column;
-  padding: 1.25rem; 
-  font-family: Arial, sans-serif;
-  position: relative;
+  box-sizing: border-box;
+  min-height: 100svh;
+  padding: 2rem 1.5rem 3rem 1.5rem;
+
 }
 
 .first-header {
@@ -80,8 +80,6 @@
 
 .first-signup-button {
   width: 100%;
-  max-width: 20rem; 
-  min-width: 18rem; 
   height: 3.125rem; 
   background-color: white;
   color: #0054FF;

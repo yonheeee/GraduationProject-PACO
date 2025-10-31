@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import LoginPage from '../login/LoginPage';
 import '../../css/login/Signin.css';
 
@@ -6,6 +7,8 @@ import Eye from '../../images/login/eye.svg';
 import CloseEye from '../../images/login/closeeye.svg';
 
 const Signin = () => {
+  const navigate = useNavigate();
+
   const [form, setForm] = useState({
     userId: '',
     pw: '',
@@ -61,7 +64,11 @@ const Signin = () => {
         </label>
       </section>
 
-      <div className="si-helper-links">ID 찾기 / 비밀번호 찾기</div>
+      <div className="si-helper-links">
+        <span onClick={() => navigate('/findid')} className="link">ID 찾기</span> 
+        &nbsp;/&nbsp; 
+        <span onClick={() => navigate('/findpassword')} className="link">비밀번호 찾기</span>
+      </div>
     </LoginPage>
   );
 };

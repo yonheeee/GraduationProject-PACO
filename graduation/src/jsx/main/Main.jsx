@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../common/Header.jsx';
 const Main = () => {
   return (
-    <div>
+    <div className='main-container'>
       <Header />
     </div>
   );
