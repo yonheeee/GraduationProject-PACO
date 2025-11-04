@@ -17,8 +17,6 @@ const Community = () => {
     const [regions, setRegions] = useState([]);       
     const [category, setCategory] = useState("전체");
 
-
-
     
     return (
         <div className="community-container">
