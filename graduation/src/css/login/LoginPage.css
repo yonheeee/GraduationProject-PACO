@@ -1,0 +1,52 @@
+.loginpage-container {
+  min-height: 100svh;
+  background: linear-gradient(180deg, #FFFFFF 21.63%, #CCE5FF 50%, #99CAFF 79.81%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.25rem;
+  position: relative;
+}
+
+.loginpage-header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-top: 2rem;
+  justify-content: flex-start;
+}
+
+.loginpage-back {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #0054FF;
+  cursor: pointer;
+}
+
+.loginpage-logo {
+  margin: 0 auto;
+  width: 6rem;
+}
+
+.loginpage-content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.loginpage-btn {
+  width: 100%;
+  height: 3.125rem;
+  background-color: #0054FF;
+  border: none;
+  border-radius: 1.5625rem;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  cursor: pointer;
+}

@@ -1,0 +1,97 @@
+.my-page-wrapper{
+  width: 100%;
+  max-width: 430px; 
+  margin: 0 auto;
+  padding: 2rem;
+  background:#fff;
+  box-sizing: border-box;
+}
+
+.user-profile-header{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.4rem;
+  gap: 1.2rem;
+}
+
+.user-info .nickname{
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.user-info .user-id{
+  font-size: 1rem;
+  color:#888;
+  margin: .4rem 0 0;
+}
+
+.user-actions {
+  display: flex;
+  width: 100%;
+  gap: 1rem; 
+}
+
+.user-actions button {
+  flex: 1; 
+  padding: 0.9rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  background: #fff;
+  border: 0.1rem solid #ddd;
+  border-radius: 1.2rem;
+  cursor: pointer;
+}
+
+.page-nav{
+  display:flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0 1.2rem;
+  border-bottom: .1rem solid #EEF2F6;
+  margin-bottom: 2.4rem;
+}
+
+.page-nav button{
+  position: relative;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  padding: 1.2rem 0;
+  margin: 0;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #B6C1CE;        
+  cursor: pointer;
+  outline: none;
+}
+
+
+.page-nav button.active{
+  color: #1184FF;         
+}
+
+.page-nav button.active::after{
+  content:"";
+  position:absolute;
+  left: 50%;
+  bottom: -.1rem;        
+  transform: translateX(-50%);
+  width: 4.8rem;          
+  height: .2rem;
+  border-radius: .2rem;
+  background:#1184FF;
+}
+ 
+
+.page-nav button:not(.active):hover{
+  color:#8FA1B6;
+}
+
+.content-container{
+  padding: 0 .4rem 2rem;
+  box-sizing: border-box;
+}
