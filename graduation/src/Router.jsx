@@ -8,7 +8,7 @@ import FindPassword from './jsx/login/FindPw.jsx';
 
 import Main from './jsx/main/Main.jsx'
 import MyPage from './jsx/mypage/Mypage.jsx';
-
+import Community from './jsx/community/Community.jsx';
 
 const AppRouter = () => {
   return (
@@ -22,6 +22,7 @@ const AppRouter = () => {
         <Route path="/findpassword" element={<FindPassword />} />
         
         <Route path="/main" element={<Main />} />
+        <Route path="/community" element={<Community/>} />
         <Route path="/mypage" element={<MyPage />} />
       </Routes>
     </Router>

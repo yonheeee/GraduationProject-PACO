@@ -67,7 +67,7 @@ const CommunityFilters = ({ onChange }) => {
             <button
               key={name}
               type="button"
-              className={`chip ${active ? "active" : ""}`}
+              className={`regions-chip ${active ? "active" : ""}`}
               onClick={() => toggleRegion(name)}
               aria-pressed={active}
             >
