@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import CommunityFilters from "./CommunityFilters";
+import ReviewParking from './ReviewParking';
 import '../../css/community/Community.css';
 
 const Community = () => {
@@ -12,7 +13,7 @@ const Community = () => {
     return(
         <div className='community-container'>
             <CommunityFilters onChange={setFilters} />
-
+            <ReviewParking />
         </div>
     )
 };

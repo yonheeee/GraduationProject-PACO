@@ -1,0 +1,117 @@
+/* 리스트 래퍼 (앱 430px 프레임 기준) */
+.rp-list {
+  width: 100%;
+  max-width: 26.875rem; /* 430px */
+  margin: 0 auto;
+  padding: 0 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+/* 카드 */
+.rp-card {
+  background: #fff;
+  border: 1px solid #E7ECF3;
+  border-radius: 1rem;
+  padding: 1rem;
+  margin: 0 0 1.25rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,.04);
+}
+
+.rp-card-header {
+  font-weight: 800;
+  font-size: 1.1rem;
+  margin-bottom: .6rem;
+}
+
+/* 난이도 */
+.rp-difficulty-title {
+  font-weight: 800;
+  margin-bottom: .4rem;
+}
+
+.rp-progress-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: .6rem;
+  margin: .4rem 0;
+}
+
+.rp-progress-label {
+  color: #4B5563;
+  font-weight: 700;
+}
+
+.rp-progress {
+  height: .5rem;
+  background: #EEF2F7;
+  border-radius: 9999px;
+  position: relative;
+  overflow: hidden;
+}
+.rp-progress-bar {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: #2F6BFF;
+  border-radius: 9999px;
+}
+
+.rp-progress-count {
+  color: #6B7280;
+  font-size: .9rem;
+}
+
+/* 리뷰 아이템 */
+.rp-review {
+  background: #F6F7FB;
+  border: 1px solid #E4E8F1;
+  border-radius: .8rem;
+  padding: .75rem .9rem;
+  margin-top: .6rem;
+}
+
+.rp-review-title {
+  font-weight: 800;
+  margin-bottom: .3rem;
+}
+
+.rp-review-text {
+  color: #4B5563;
+  line-height: 1.4;
+}
+
+.rp-review-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: .5rem;
+  font-size: .9rem;
+}
+
+.rp-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+}
+.rp-tag {
+  color: #2F6BFF;
+  background: #EAF1FF;
+  border: 1px solid #CFE0FF;
+  padding: .2rem .5rem;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+.rp-counters {
+  display: flex;
+  gap: .9rem;
+  color: #8A93A3;
+}
+
+/* 장식 점 */
+.rp-dots {
+  text-align: center;
+  letter-spacing: .4rem;
+  color: #C6CEDA;
+  margin-top: .4rem;
+}

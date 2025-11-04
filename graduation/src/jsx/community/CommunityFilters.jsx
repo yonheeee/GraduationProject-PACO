@@ -6,7 +6,7 @@ const CommunityFilters = ({ onChange }) => {
         () => [
             "전체", "서울", "경기", "대구", "제주도"
         ],
-        []
+        [] 
     );
 
     const CATEGORY_LIST = useMemo(
