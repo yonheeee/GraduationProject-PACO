@@ -1,15 +1,12 @@
 .header {
   width: 100%;
-  max-width: 26.875rem; 
-  min-width: 20rem;  
-  height: 4.375rem;
+  max-width: 430px; 
   margin: 0 auto;
   background: linear-gradient(180deg, #75B6FB 0%, #FDFDFD 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  padding: 0 1rem;
 }
 
 .header .icon.alarm {

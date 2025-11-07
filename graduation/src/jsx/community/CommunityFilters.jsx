@@ -10,7 +10,7 @@ const CommunityFilters = ({ onChange }) => {
     );
 
     const CATEGORY_LIST = useMemo(
-    () => ["전체", "자유", "질문", "꿀팁", "후기"],
+    ( ) => ["전체", "자유", "질문", "꿀팁", "후기"],
     []
     );
       const emit = (next = {}) => {
