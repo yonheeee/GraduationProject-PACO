@@ -1,70 +1,356 @@
-# Getting Started with Create React App
+![alt text](/src/images/common/logo.svg)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 🚗 스마트 주차 추천 애플리케이션 "PACO"
 
-## Available Scripts
+<br>
 
-In the project directory, you can run:
+## 프로젝트 소개
 
-### `npm start`
+- **PACO**는 **사용자의 위치, 주차 잔여 좌석, 이용 이력 및 선호도**를 기반으로 최적의 주차 공간을 추천하는 서비스입니다.
+- **혼잡도, 거리, 요금, 환경(전기차 충전 여부 등)** 요소를 종합적으로 분석하여 사용자 맞춤형 주차 경험을 제공합니다.
+- 지도 기반 UI를 통해 **사용자 주변 반경 내 주차장을 직관적으로 확인**하고, 클릭 시 상세 정보를 확인할 수 있습니다.
+- **검색 및 정렬 기능**을 통해 지역 또는 주차장 이름 검색이 가능하며, 가까운순·요금순 등 다양한 기준으로 결과를 탐색할 수 있습니다.
+- **주차장 상세 페이지**에서는 잔여 공간, 요금, 거리, 충전 시설 여부 등의 정보를 제공하고, 길찾기 기능을 지원합니다.
+- 로그인 시 **사용자 선호도 및 이용 이력을 반영한 추천 기능**을 제공하며, 비회원은 기본 탐색 기능을 사용할 수 있습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 팀원 구성
 
-### `npm test`
+<div align="left">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| **박민지** | **김연희** | 
+| :------: |  :------: | 
+| [<img src="https://avatars.githubusercontent.com/u/97029619?v=4" height=150 width=150> <br/> @mandoo15](https://github.com/mandoo15) | [<img src="https://avatars.githubusercontent.com/u/133519559?v=4" height=150 width=150> <br/> @yonheeee](https://github.com/yonheeee) 
 
-### `npm run build`
+</div>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 1. 개발 환경
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Front : React, ReactNative
+- Back-end : SpringBoot, Mysql
+- 버전 및 이슈관리 : Github, Github Issues, Github Project
+- 협업 툴 : Discord, Notion
+- 디자인 : [Figma](https://www.figma.com/design/vCXrKJpo0U8QM2PkpAPo2c/2025--final-project?node-id=0-1&p=f&t=Z4YTDgKvL8zy8h8Q-0)
+- 
+<br>
 
-### `npm run eject`
+## 2. 채택한 개발 기술과 브랜치 전략
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### React → React Native
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 초기에는 빠른 개발과 UI/UX 검증을 위해 React 기반의 웹 환경에서 먼저 구현했습니다.
+- 주차장 검색, 추천 기능, 사용자 흐름 등 핵심 기능을 웹에서 테스트하며 서비스 구조를 검증했습니다.
+- 이후 모바일 환경에서의 접근성과 위치 기반 서비스 특성을 고려하여 React Native로 전환하여 앱으로 확장했습니다.
+- 컴포넌트 단위로 구조를 설계하여 React → React Native 전환 시 재사용성을 높일 수 있었습니다.
+- 이러한 방식으로 개발 리스크를 줄이고 안정적인 서비스 구현이 가능했습니다.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### React Native
 
-## Learn More
+- 컴포넌트 기반 구조를 통해 유지보수성과 재사용성을 고려했습니다.
+- 반복되는 UI 요소(배너, 네비게이션 등)를 컴포넌트화하여 개발 효율을 높였습니다.
+- 모바일 환경에 최적화된 UI/UX를 구성하여 사용자 경험을 개선했습니다.
+- 위치 기반 주차 추천 서비스 특성상 모바일 환경에서의 접근성을 고려하여 선택했습니다.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### styled-components
 
-### Code Splitting
+- props를 활용한 조건부 스타일링을 통해 상황에 맞는 UI를 유연하게 구현했습니다.
+- 빌드 시 고유한 클래스 네임이 생성되어 스타일 충돌을 방지할 수 있었습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Recoil
 
-### Analyzing the Bundle Size
+- 전역 상태 관리를 위해 Recoil을 사용하여 불필요한 props drilling을 방지했습니다.
+- 사용자 정보, 추천 데이터 등 여러 컴포넌트에서 공유되는 상태를 효율적으로 관리할 수 있었습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Redux 대신 Recoil을 선택한 이유
+    - React Native 환경에서도 간단하게 적용 가능하며, useState와 유사한 방식으로 학습 부담이 적었습니다.
+    - 적은 코드로 상태 관리를 구현할 수 있어 개발 생산성을 높일 수 있었습니다.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### 브랜치 전략
 
-### Advanced Configuration
+- GitHub Flow 기반의 브랜치 전략을 사용했습니다.
+- 각 작업은 기능 단위로 브랜치를 생성하여 개발을 진행하고, Pull Request를 통해 코드 리뷰 후 main(master) 브랜치에 병합했습니다.
+- PR 과정에서 팀원 간 피드백을 반영하여 코드 품질을 개선했습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  - **main(master)** 브랜치: 최종 코드가 반영되는 브랜치
+  - **feature 브랜치**: 기능 단위 개발 브랜치 (작업 후 삭제)
 
-### Deployment
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## 3. 프로젝트 구조
 
-### `npm run build` fails to minify
+```
+├── README.md
+├── package-lock.json
+├── package.json
+├── .gitignore
+│
+├── Image
+├── public
+│
+└── src
+    ├── api
+    │   ├── auth.js              # 인증 관련 로직
+    │   └── axios.js             # Axios 인스턴스 설정
+    │
+    ├── css                      # 스타일 파일
+    │
+    ├── images                   # 화면별 이미지 리소스
+    │   ├── common               # 공통 이미지
+    │   ├── login                # 로그인/회원가입 관련 이미지
+    │   ├── main                 # 메인 화면 관련 이미지
+    │   └── mypage               # 마이페이지 관련 이미지
+    │
+    ├── jsx                      # 화면 및 UI 컴포넌트
+    │   ├── common               # 공통 레이아웃 및 UI 컴포넌트
+    │   ├── community            # 커뮤니티 관련 컴포넌트
+    │   ├── login                # 로그인/회원가입 관련 컴포넌트
+    │   ├── main                 # 메인 화면 관련 컴포넌트
+    │   └── mypage               # 마이페이지 관련 컴포넌트
+    │
+    ├── App.css                  # App 컴포넌트 스타일
+    ├── App.js                   # 메인 App 컴포넌트
+    ├── App.test.js              # 테스트 코드
+    ├── index.css                # 전역 스타일
+    ├── index.js                 # 앱 실행 진입점
+    ├── logo.svg                 # 기본 로고 파일
+    ├── reportWebVitals.js       # 성능 측정 관련 설정
+    ├── Router.jsx               # 라우터 설정
+    └── setupTests.js            # 테스트 환경 설정
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<br>
+
+## 5. 개발 기간 및 작업 관리
+
+### 개발 기간
+
+- 전체 개발 기간 : 2025-03 ~ 2025-10
+- UI 구현 : 2025-03 ~ 2025-10
+- 기능 구현 : 2025-03 ~ 2025-10
+
+<br>
+
+### 작업 관리
+
+- Figma와  Notion를 사용하여 진행 상황을 공유했습니다.
+- 주간회의를 진행하며 작업 순서와 방향성에 대한 고민을 나누고 Notion에 회의 내용을 기록했습니다.
+
+<br>
+
+## 7. 페이지별 기능
+
+### [초기화면]
+- 서비스 접속 초기화면으로 splash 화면이 잠시 나온 뒤 다음 페이지가 나타납니다.
+    - 로그인이 되어 있지 않은 경우 : SNS 로그인 페이지
+    - 로그인이 되어 있는 경우 : README 홈 화면
+- SNS(카카오톡, 구글, 페이스북) 로그인 기능은 구현되어 있지 않습니다.
+
+| 초기화면 |
+|----------|
+![alt text](초기화면.png)
+
+<br>
+
+### [회원가입]
+- 이메일 주소와 비밀번호를 입력하면 입력창에서 바로 유효성 검사가 진행되고 통과하지 못한 경우 각 경고 문구가 입력창 하단에 표시됩니다.
+- 이메일 주소의 형식이 유효하지 않거나 이미 가입된 이메일일 경우 또는 비밀번호가 6자 미만일 경우에는 각 입력창 하단에 경구 문구가 나타납니다.
+- 작성이 완료된 후, 유효성 검사가 통과된 경우 다음 버튼이 활성화되며, 버튼을 클릭하면 프로필 설정 화면이 나타납니다.
+
+| 회원가입 |
+|----------|
+|![join](https://user-images.githubusercontent.com/112460466/210173571-490f5beb-5791-4a4a-8c5e-510cdcb5f1fe.gif)|
+
+<br>
+
+### [프로필 설정]
+- 회원가입 페이지의 유효성 검사를 통과해야 진입할 수 있습니다.
+- 프로필 설정에 필요한 프로필 사진, 사용자 이름, 계정 ID, 소개를 입력받습니다.
+- 사용자 이름과 계정 ID는 필수 입력사항입니다.
+- 계정 ID에는 형식 및 중복 검사가 진행됩니다.
+- 프로필 사진은 등록하지 않을 경우 기본 이미지가 등록됩니다.
+
+| 프로필 설정 |
+|----------|
+|![setProfile](https://user-images.githubusercontent.com/112460466/210173749-2da6c9af-eb93-4eea-9663-1a03e19299ec.gif)|
+
+<br>
+
+### [로그인]
+- 이메일 주소와 비밀번호를 입력하면 입력창에서 바로 유효성 검사가 진행되고 통과하지 못한 경우 각 경고 문구가 입력창 하단에 표시됩니다.
+- 이메일 주소의 형식이 유효하지 않거나 비밀번호가 6자 미만일 경우에는 각 입력창 하단에 경구 문구가 나타납니다.
+- 작성이 완료된 후, 유효성 검사가 통과된 경우 로그인 버튼이 활성화됩니다.
+- 로그인 버튼 클릭 시 이메일 주소 또는 비밀번호가 일치하지 않을 경우에는 경고 문구가 나타나며, 로그인에 성공하면 홈 피드 화면으로 이동합니다.
+
+| 로그인 |
+|----------|
+|![login](https://user-images.githubusercontent.com/112460466/210177956-c716414e-01c2-4c1e-b1f7-6562b9b7a857.gif)|
+
+<br>
+
+### [로그아웃]
+- 상단 의 kebab menu를 클릭 후 나타나는 모달창의 로그아웃 버튼을 클릭하면 확인창이 뜹니다.
+- 로그아웃시 로컬 저장소의 토큰 값과 사용자 정보를 삭제하고 초기화면으로 이동합니다.
+
+| 로그아웃 |
+|----------|
+|![logout](https://user-images.githubusercontent.com/112460466/210178009-11225733-7af5-4b8b-aa1c-fe264af01797.gif)|
+
+<br>
+
+### [상하단 배너]
+- 상단 배너 : 각 페이지별로 다른 종류의 버튼을 가지고 있습니다.
+    - 뒤로가기 : 브라우저 상에 기록된 이전 페이지로 돌아갑니다.
+    - 검색 : 사용자 검색 페이지로 이동합니다.
+    - 사용자 이름 : 채팅룸 페이지의 경우 상대방의 사용자 이름을 보여줍니다.
+    - kebab menu : 각 페이지 또는 컴포넌트에 따른 하단 모달창을 생성합니다.
+        - 상품, 댓글, 게시글 컴포넌트 - 삭제, 수정, 신고하기
+        - 사용자 프로필 페이지 - 설정 및 사용자 정보, 로그아웃
+- 하단 탭 메뉴 : 홈, 채팅, 게시물 작성, 프로필 아이콘을 클릭하면 각각 홈 피드, 채팅 목록, 게시글 작성 페이지, 내 프로필 페이지로 이동합니다.
+
+| 상하단 배너 |
+|----------|
+|![tab](https://user-images.githubusercontent.com/112460466/210178028-3185f944-6ac1-468a-94ba-b32cdc5e380e.gif)|
+
+<br>
+
+### [홈 피드]
+- 자신이 팔로우 한 유저의 게시글이 최신순으로 보여집니다.
+- 팔로우 한 유저가 없거나, 팔로워의 게시글이 없을 경우 검색 버튼이 표시됩니다.
+- 게시글의 상단 유저 배너 클릭 시 게시글을 작성한 유저의 프로필 페이지로, 본문 클릭 시 게시글 상세 페이지로 이동합니다.
+
+| 팔로우하는 유저가 없을 때 | 팔로우하는 유저가 있을 때 |
+|----------|----------|
+|![home0](https://user-images.githubusercontent.com/112460466/210379059-48900aac-3735-45c6-a249-bc9c41b49414.gif)|![home1](https://user-images.githubusercontent.com/112460466/210379110-49153d27-0405-48e6-adfb-62c7818d2f43.gif)|
+
+<br>
+
+### [검색]
+- 사용자 이름 혹은 계정 ID로 유저를 검색할 수 있습니다.
+- 검색어와 일치하는 단어는 파란색 글씨로 표시됩니다.
+- 클릭 시 해당 유저의 프로필 페이지로 진입합니다.
+
+| 검색 |
+|----------|
+|![search](https://user-images.githubusercontent.com/112460466/210379805-6c8a42c0-0de8-48d3-8f75-cdf0ae5f4fb6.gif)|
+
+<br>
+
+### [프로필]
+
+#### 1. 내 프로필
+- 상단 프로필란에 프로필 수정과 상품 등록 버튼이 나타납니다.
+- 판매중인 상품란에는 사용자가 판매하는 상품이 등록되며, 판매중인 상품이 없을 경우에는 영역 자체가 나타나지 않습니다.
+- 게시글란은 상단의 리스트형과 앨범형 두 개의 버튼을 통해서 나누어 볼 수 있습니다.
+    - 리스트형의 경우, 사용자가 작성한 글 내용과 이미지, 좋아요와 댓글의 수를 보여줍니다.
+    - 앨범형의 경우, 사용자 게시글 중 이미지가 있는 글만 필터링해 바둑판 배열로 보여줍니다.
+- 게시글을 클릭하면 각 게시글의 상세페이지로 이동합니다.
+
+| 리스트형 & 앨범형 게시글 | 팔로잉 & 팔로워 리스트 |
+|----------|----------|
+|![myProfile](https://user-images.githubusercontent.com/112460466/210380492-40560e0b-c306-4e69-8939-cc3e7dc3d8fe.gif)|![followList](https://user-images.githubusercontent.com/112460466/210380539-d09b0bd7-0b61-4b22-85fa-f75e6bcecb68.gif)|
+
+<br>
+
+#### 2. 타 유저의 프로필
+- 버튼을 클릭해 해당 사용자를 팔로우 또는 언팔로우할지 결정할 수 있으며 팔로워 수의 변화가 페이지에 즉시 반영됩니다.
+
+| 팔로우 & 언팔로우 |
+|----------|
+|![yourProfile](https://user-images.githubusercontent.com/112460466/210380853-04f2d2bd-adab-4786-a8e8-c275ce765071.gif)|
+
+<br>
+
+#### 3. 프로필 수정
+- 사용자 프로필 이미지, 이름, 아이디, 소개 중 한 가지를 수정하면 저장 버튼이 활성화됩니다.
+- 계정 ID의 유효한 형식 및 중복 검사를 통과하지 못하면 하단에 경고 문구가 나타나며 저장 버튼이 비활성화됩니다.
+- 사용자 이름과 소개는 공백으로 시작할 수 없습니다.
+- 프로필 수정이 완료되면 내 프로필 페이지로 이동합니다.
+
+| 초기화면 |
+|----------|
+|![editProfile](https://user-images.githubusercontent.com/112460466/210381212-d67fdf87-b90c-4501-a331-f2a384534941.gif)|
+
+<br>
+
+### [게시글]
+
+#### 1. 게시글 작성
+- 글이 입력되거나 사진이 첨부되면 업로드 버튼이 활성화됩니다.
+- 최대 세 장까지 이미지 첨부가 가능하며 첨부한 파일을 취소할 수 있습니다.
+- 게시글 하단에 업로드 날짜가 표시됩니다.
+
+| 게시글 작성 |
+|----------|
+|![uploadPost](https://user-images.githubusercontent.com/112460466/210381758-1de5a889-f587-41d2-b200-22c20a970519.gif)|
+
+<br>
+
+#### 2. 게시글 수정 및 삭제
+- 자신의 게시글일 경우 모달 버튼을 통해 수정, 삭제가 가능합니다.
+- 게시글 삭제 버튼 클릭 시, 게시글을 삭제하고 페이지를 리렌더링하여 삭제된 내용을 페이지에 반영합니다.
+- 타 유저의 게시글일 경우 모달 버튼을 통해 신고할 수 있습니다.
+
+| 게시글 수정 & 삭제 |
+|----------|
+|![editDeletePost](https://user-images.githubusercontent.com/112460466/210382021-da057943-dc21-411e-a1f8-552be0e973bf.gif)|
+
+<br>
+
+#### 3. 좋아요와 댓글
+- 좋아요와 댓글 수는 실시간으로 상세 페이지에 반영됩니다.
+- 댓글이 몇 분 전에 작성되었는지 표시됩니다.
+- 자신의 댓글일 경우 모달 버튼을 통해 삭제가 가능합니다.
+- 타 유저의 댓글일 경우 모달 버튼을 통해 신고할 수 있습니다.
+
+| 좋아요 & 댓글 |
+|----------|
+|![likeComment](https://user-images.githubusercontent.com/112460466/210382217-01d70181-91c3-43db-a1b8-409a612afb1c.gif)|
+
+<br>
+
+### [상품]
+
+#### 1. 상품 등록
+- 상품 이미지, 상품명, 가격, 판매 링크를 필수로 입력해야 저장 버튼이 활성화됩니다.
+- 상품 가격은 숫자만 입력할 수 있으며, 숫자를 입력하면 자동으로 원 단위로 변환됩니다.
+- 상품 가격이 0원일 경우 버튼이 비활성화되며 하단에 경고 문구가 나타납니다.
+- 상품명과 판매 링크는 공백으로 시작할 수 없습니다.
+- 상품 등록이 완료되면 내 프로필 페이지로 이동합니다.
+
+| 상품 등록 |
+|----------|
+|![addProduct](https://user-images.githubusercontent.com/112460466/210386068-c6ff2e05-eb64-4abc-b6dc-93bf52b88d3f.gif)|
+
+<br>
+
+#### 2. 상품 수정 및 삭제
+- 상품 이미지, 상품명, 가격, 판매 링크 중 한 가지를 수정하면 저장 버튼이 활성화됩니다.
+- 상품 수정이 완료되면 내 프로필 페이지로 이동합니다.
+- 상품 삭제 버튼 클릭 시, 상품을 삭제하고 페이지를 리렌더링하여 삭제된 내용을 페이지에 반영합니다.
+
+| 상품 수정 & 삭제 |
+|----------|
+|![editDeleteProduct](https://user-images.githubusercontent.com/112460466/210386311-5fae87a7-745f-47c0-b8e3-fc41c65cb3cb.gif)|
+
+<br>
+
+### [채팅]
+- 채팅 목록에서 아직 읽지 않은 채팅에는 좌측 상단의 파란색 알림을 띄워줍니다.
+- 채팅방에서 메시지를 입력하거나 파일을 업로드하면 전송 버튼이 활성화됩니다.
+- 채팅방에서 우측 상단의 채팅방 나가기 모달 버튼을 통해 채팅 목록 페이지로 이동할 수 있습니다.
+- 채팅 메시지 전송 및 수신 기능은 개발 예정입니다.
+
+| 채팅 |
+|----------|
+|![chat](https://user-images.githubusercontent.com/112460466/210386478-ea4877c5-1728-4872-ab50-a8408ddf6dcd.gif)|
+
+<br>
+
+
+
