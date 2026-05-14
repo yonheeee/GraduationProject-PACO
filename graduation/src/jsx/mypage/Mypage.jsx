@@ -1,24 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../css/mypage/Mypage.css';
+import UserApi from '../../api/User/User';
+import Footer from '../common/Footer.jsx';
+import Header from '../common/Header.jsx';
 
 import General from './General';
 import MyActivity from './MyActivity';
 import FavoriteParkingList from './FavoriteParkingList';
-import Setting from './Setting';
-
-const User = {
-    nickname: '닉네임',
-    userId: 'unknown123_',
-};
-const Parking = [
-    { id: 1, name: '서울시 공영주차장', 
-        address: '서울시 강남구 서초대로 11-6', 
-        status: '혼잡', 
-        remainparking: '45' },
-];
 
 const MyPage = () => {
-    const [activeTab, setActiveTab] = useState('favorites');
+    const navigate = useNavigate();
+    const [activeTab, setActiveTab] = useState('general');
+
+    const [userInfo, setUserInfo] = useState({
+        nickname: '',
+        userId: '',
+        role: '',
+        counts: { // 활동 요약 숫자
+            myReviewCount: 0,
+            myCommentCount: 0,
+            likedReviewCount: 0,
+            savedParkingCount: 0
+        }
+    });
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const data = await UserApi.getMyProfile();
+                setUserInfo({
+                    nickname: data.username,
+                    userId: data.email,
+                    role: data.role,
+                    counts: {
+                        myReviewCount: data.myReviewCount,
+                        myCommentCount: data.myCommentCount,
+                        likedReviewCount: data.likedReviewCount,
+                        savedParkingCount: data.savedParkingCount
+                    }
+                });
+            } catch (error) {
+                console.error("프로필 조회 실패:", error);
+                if (error.response?.status === 401) {
+                    navigate('/signin');
+                }
+            }
+        };
+        fetchProfile();
+    }, [navigate]);
 
     const renderTabContent = () => {
         switch (activeTab) {
@@ -27,38 +57,40 @@ const MyPage = () => {
             case 'activity':
                 return <MyActivity />;
             case 'favorites':
-               
-                return <FavoriteParkingList parkingData={Parking} />;
-            case 'settings':
-                return <Setting />;
+                return <FavoriteParkingList />;
             default:
-                return <FavoriteParkingList parkingData={Parking} />;
+                return <General />;
         }
     };
 
     return (
         <div className="my-page-wrapper">
-            <header className="user-profile-header">
-                <div className="user-info">
-                    <p className="nickname">{User.nickname}</p>
-                    <p className="user-id">{User.userId}</p>
-                </div>
-                <div className="user-actions">
-                    <button className="btn-logout">로그아웃</button>
-                    <button className="btn-withdraw">탈퇴하기</button>
-                </div>
-            </header>
+            <Header/>
+            <div style={{width: '90%', margin: '5% auto'}}>
+                <header className="user-profile-header">
+                    <div className="user-info">
+                        <p className="nickname">{userInfo.nickname || '사용자'}</p>
+                        <p className="user-id">{userInfo.userId || '정보를 불러오는 중...'}</p>
+                    </div>
+                </header>
 
-            <nav className="page-nav">
-                <button onClick={() => setActiveTab('general')} className={activeTab === 'general' ? 'active' : ''}>일반</button>
-                <button onClick={() => setActiveTab('activity')} className={activeTab === 'activity' ? 'active' : ''}>내 활동</button>
-                <button onClick={() => setActiveTab('favorites')} className={activeTab === 'favorites' ? 'active' : ''}>관심 주차장</button>
-                <button onClick={() => setActiveTab('settings')} className={activeTab === 'settings' ? 'active' : ''}>맞춤 설정</button>
-            </nav>
+                <nav className="page-nav">
+                    <button onClick={() => setActiveTab('general')}
+                            className={activeTab === 'general' ? 'active' : ''}>일반
+                    </button>
+                    <button onClick={() => setActiveTab('activity')}
+                            className={activeTab === 'activity' ? 'active' : ''}>내 활동
+                    </button>
+                    <button onClick={() => setActiveTab('favorites')}
+                            className={activeTab === 'favorites' ? 'active' : ''}>관심 주차장
+                    </button>
+                </nav>
 
-            <main className="content-container">
-                {renderTabContent()}
-            </main>
+                <main className="content-container">
+                    {renderTabContent()}
+                </main>
+            </div>
+            <Footer/>
         </div>
     );
 };

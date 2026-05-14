@@ -6,9 +6,11 @@ import '../../css/login/Signin.css';
 import Eye from '../../images/login/eye.svg';
 import CloseEye from '../../images/login/closeeye.svg';
 
+import AuthApi from "../../api/Auth/Auth";
+
+// 로그인
 const Signin = () => {
   const navigate = useNavigate();
-
   const [form, setForm] = useState({
     userId: '',
     pw: '',
@@ -19,12 +21,34 @@ const Signin = () => {
     setForm((s) => ({ ...s, [name]: value }));
   };
 
-  const handleSubmit = () => {
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
+  const handleSubmit = async () => {
+    // 유효성 검사
     if (!form.userId || !form.pw) {
-      alert('모든 항목을 입력해주세요.');
+      alert('모든 항목을 입력해주세요.'); // TODO : 토스트메시지로 변경
       return;
     }
-    alert('로그인!');
+
+    try {
+      // API 호출
+      const data = await AuthApi.login(form.userId, form.pw);
+
+      // 토큰 저장
+      localStorage.setItem('accessToken', data.token);
+
+      alert('로그인 성공!'); // TODO : 토스트메시지로 변경
+      navigate('/main');
+
+    } catch (error) {
+      // 에러 처리
+      console.error(error);
+      alert('아이디 또는 비밀번호를 확인해주세요.');
+    }
   };
 
   return (
@@ -44,7 +68,8 @@ const Signin = () => {
                 name="userId"
                 value={form.userId}
                 onChange={onChange}
-                placeholder="아이디"
+                onKeyDown={handleKeyDown}
+                placeholder="아이디(이메일)"
             />
           </div>
         </label>
@@ -58,6 +83,7 @@ const Signin = () => {
                 name="pw"
                 value={form.pw}
                 onChange={onChange}
+                onKeyDown={handleKeyDown}
                 placeholder="비밀번호"
             />
           </div>

@@ -1,8 +1,6 @@
 .my-page-wrapper{
   width: 100%;
-  max-width: 430px; 
   margin: 0 auto;
-  padding: 2rem;
   background:#fff;
   box-sizing: border-box;
 }
@@ -94,4 +92,180 @@
 .content-container{
   padding: 0 .4rem 2rem;
   box-sizing: border-box;
+}
+
+
+
+
+/* =========================================
+   [General] & [MyActivity] 공통 카드 스타일
+   ========================================= */
+
+/* 메뉴/리스트 컨테이너 */
+.general-menu-container,
+.activity-list-container {
+  padding: 0.5rem 0.2rem; /* 카드 그림자 잘리지 않게 여백 */
+}
+
+/* 리스트 초기화 */
+.menu-list,
+.data-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* 카드 사이 간격 16px */
+}
+
+/* --- [General] 메뉴 아이템 (카드형) --- */
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: #ffffff;
+  padding: 1.2rem 1.5rem;
+  border-radius: 1.2rem; /* 둥근 모서리 */
+
+  /* 카드 그림자 (은은하게) */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #F0F4F8; /* 아주 연한 테두리 */
+
+  cursor: pointer;
+  transition: all 0.2s ease-in-out; /* 부드러운 움직임 */
+}
+
+/* 마우스 올렸을 때 효과 */
+.menu-item:not(.menu-divider):hover {
+  transform: translateY(-3px); /* 살짝 위로 뜸 */
+  box-shadow: 0 6px 16px rgba(17, 132, 255, 0.15); /* 파란 그림자 */
+  border-color: #1184FF;
+}
+
+/* 메뉴 텍스트 */
+.menu-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #333333;
+}
+
+/* 화살표 아이콘 */
+.arrow {
+  font-size: 1.1rem;
+  color: #C2C2C2;
+  font-weight: 700;
+}
+
+/* --- [General] 구분선 --- */
+.menu-divider {
+  height: 1px;
+  background-color: transparent; /* 카드형이라 선 대신 여백으로 처리 */
+  margin: 0.5rem 0;
+}
+
+/* --- [General] 위험 요소 (로그아웃, 탈퇴) --- */
+.menu-item.danger {
+  border-color: #FFF0F0;
+  background-color: #FFFDFD;
+}
+
+.menu-item.danger:hover {
+  background-color: #FFF0F0;
+  border-color: #FF3B30;
+  box-shadow: 0 6px 16px rgba(255, 59, 48, 0.15); /* 빨간 그림자 */
+}
+
+.danger-text {
+  color: #FF3B30; /* 애플 스타일 레드 */
+}
+
+
+/* =========================================
+   [MyActivity] 내 활동 전용 스타일
+   ========================================= */
+
+/* 뒤로가기 버튼 */
+.back-btn-text {
+  background: none;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  transition: color 0.2s;
+}
+
+.back-btn-text:hover {
+  color: #1184FF;
+}
+
+/* 활동 내역 타이틀 */
+.activity-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 1.5rem;
+  padding-left: 0.5rem; /* 시각적 정렬 */
+}
+
+/* 활동 내역 아이템 (카드형) */
+.data-item {
+  background-color: #fff;
+  padding: 1.4rem;
+  border-radius: 1rem;
+
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  border: 1px solid #EEF2F6;
+
+  cursor: pointer;
+  transition: all 0.2s;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.data-item:hover {
+  background-color: #F8FBFF; /* 아주 연한 블루 배경 */
+  border-color: #1184FF;
+}
+
+/* 글/댓글 제목 */
+.data-item .item-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+  line-height: 1.4;
+
+  /* 긴 텍스트 말줄임표 (...) 처리 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 날짜 */
+.data-item .item-date {
+  font-size: 0.85rem;
+  color: #999;
+  font-weight: 500;
+  align-self: flex-end; /* 오른쪽 정렬 */
+}
+
+/* 데이터 없음 메시지 */
+.no-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  color: #AAA;
+  font-size: 1rem;
+  background: #FAFAFA;
+  border-radius: 1rem;
+  margin-top: 1rem;
 }
