@@ -3,9 +3,9 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import '../../css/common/Footer.css';
 
 const navItems = [
-  { label: 'Home', path: '/main' },
-  { label: 'Community', path: '/community' },
-  { label: 'My', path: '/mypage' },
+  { label: '홈', path: '/main' },
+  { label: '커뮤니티', path: '/community' },
+  { label: '마이페이지', path: '/mypage' },
 ];
 
 export default function Footer() {

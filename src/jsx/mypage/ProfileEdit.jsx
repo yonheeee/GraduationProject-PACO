@@ -15,7 +15,7 @@ export default function ProfileEdit() {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    alert('Profile edit API is not connected yet.');
+    alert('프로필 수정 API가 아직 연결되지 않았습니다.');
     navigate('/mypage');
   };
 
@@ -23,16 +23,16 @@ export default function ProfileEdit() {
     <div className="my-page-wrapper">
       <Header />
       <form className="content-container" onSubmit={onSubmit} style={{ width: '90%', margin: '2rem auto' }}>
-        <h2>Profile Edit</h2>
+        <h2>회원 정보 수정</h2>
         <label className="menu-text">
-          Username
+          닉네임
           <input name="username" value={form.username} onChange={onChange} style={{ width: '100%', marginTop: '0.5rem' }} />
         </label>
         <label className="menu-text" style={{ display: 'block', marginTop: '1rem' }}>
-          Email
+          이메일
           <input name="email" value={form.email} onChange={onChange} style={{ width: '100%', marginTop: '0.5rem' }} />
         </label>
-        <button type="submit" className="menu-item" style={{ marginTop: '1.5rem', width: '100%' }}>Save</button>
+        <button type="submit" className="menu-item" style={{ marginTop: '1.5rem', width: '100%' }}>저장</button>
       </form>
       <Footer />
     </div>

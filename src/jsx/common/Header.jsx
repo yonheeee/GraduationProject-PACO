@@ -7,9 +7,9 @@ import Logo from '../../images/common/logo.svg';
 export default function Header() {
   return (
     <header className="header">
-      <img src={Alarm} alt="alarm" className={`icon alarm`} />
+      <img src={Alarm} alt="알림" className={`icon alarm`} />
       <img src={Logo} alt="logo" className="logo" />
-      <img src={Search} alt="search" className={`icon search`} />
+      <img src={Search} alt="검색" className={`icon search`} />
     </header>
   );
 }

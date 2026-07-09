@@ -20,7 +20,7 @@ export default function CommunityUpdate() {
           category: data.category || 'FREE',
         });
       } catch (error) {
-        console.error('Failed to load review:', error);
+        console.error('게시글을 불러오지 못했습니다:', error);
       }
     };
 
@@ -38,8 +38,8 @@ export default function CommunityUpdate() {
       await ReviewApi.updateReview(id, form);
       navigate(`/community/${id}`);
     } catch (error) {
-      console.error('Failed to update review:', error);
-      alert('Review API is not connected yet.');
+      console.error('게시글 수정에 실패했습니다:', error);
+      alert('리뷰 API가 아직 연결되지 않았습니다.');
     }
   };
 
@@ -47,9 +47,9 @@ export default function CommunityUpdate() {
     <div className="community-container">
       <Header />
       <form className="review-card" onSubmit={onSubmit} style={{ cursor: 'default' }}>
-        <input name="title" value={form.title} onChange={onChange} placeholder="Title" style={{ width: '100%', marginBottom: '0.75rem' }} />
-        <textarea name="content" value={form.content} onChange={onChange} placeholder="Content" rows={8} style={{ width: '100%' }} />
-        <button type="submit" style={{ marginTop: '1rem' }}>Update</button>
+        <input name="title" value={form.title} onChange={onChange} placeholder="제목" style={{ width: '100%', marginBottom: '0.75rem' }} />
+        <textarea name="content" value={form.content} onChange={onChange} placeholder="내용" rows={8} style={{ width: '100%' }} />
+        <button type="submit" style={{ marginTop: '1rem' }}>수정</button>
       </form>
       <Footer />
     </div>

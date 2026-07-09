@@ -57,12 +57,12 @@ const normalizeParking = (parking) => {
   return {
     ...parking,
     id: parking.id ?? parking.parkingId ?? parking.pk ?? parking.name,
-    name: parking.name ?? parking.parkingName ?? parking.prkplceNm ?? 'Unnamed parking lot',
-    address: parking.address ?? parking.roadAddress ?? parking.addr ?? parking.rdnmadr ?? parking.lnmadr ?? 'No address',
+    name: parking.name ?? parking.parkingName ?? parking.prkplceNm ?? '이름 없는 주차장',
+    address: parking.address ?? parking.roadAddress ?? parking.addr ?? parking.rdnmadr ?? parking.lnmadr ?? '주소 정보 없음',
     status: getStatus(parking),
     remainParking: remainParking ?? '-',
     totalParking: totalParking ?? '-',
-    fee: parking.fee ?? parking.parkingFee ?? parking.basicCharge ?? parking.price ?? 'No fee info',
+    fee: parking.fee ?? parking.parkingFee ?? parking.basicCharge ?? parking.price ?? '요금 정보 없음',
   };
 };
 
@@ -72,7 +72,7 @@ export default function MapContainer({ setSelectedParking }) {
   const currentMarkerRef = useRef(null);
   const destinationMarkerRef = useRef(null);
   const parkingMarkersRef = useRef([]);
-  const [message, setMessage] = useState('Loading map...');
+  const [message, setMessage] = useState('지도를 불러오는 중입니다...');
   const [keyword, setKeyword] = useState('');
   const [destination, setDestination] = useState(null);
   const [isSearching, setIsSearching] = useState(false);
@@ -118,10 +118,10 @@ export default function MapContainer({ setSelectedParking }) {
       const parkings = getParkingList(payload);
 
       addParkingMarkers(kakao, map, parkings);
-      setMessage(parkings.length > 0 ? '' : 'No parking data to display.');
+      setMessage(parkings.length > 0 ? '' : '표시할 주차장 데이터가 없습니다.');
     } catch (error) {
       console.error('Failed to load parking data:', error);
-      setMessage('Parking API is not connected yet. Showing map only.');
+      setMessage('주차장 API가 아직 연결되지 않아 지도만 표시합니다.');
     }
   }, [addParkingMarkers, clearParkingMarkers]);
 
@@ -151,7 +151,7 @@ export default function MapContainer({ setSelectedParking }) {
       address: place.road_address_name || place.address_name || '',
     });
     setSelectedParking(null);
-    setMessage('Loading parking lots near destination...');
+    setMessage('목적지 주변 주차장을 불러오는 중입니다...');
     loadParkings(kakao, map, center);
   };
 
@@ -160,25 +160,25 @@ export default function MapContainer({ setSelectedParking }) {
 
     const query = keyword.trim();
     if (!query) {
-      setMessage('Enter a destination first.');
+      setMessage('먼저 목적지를 입력해주세요.');
       return;
     }
 
     const kakao = window.kakao;
     if (!kakao?.maps?.services) {
-      setMessage('Kakao place search is not ready yet.');
+      setMessage('카카오 장소 검색을 아직 사용할 수 없습니다.');
       return;
     }
 
     setIsSearching(true);
-    setMessage('Searching destination...');
+    setMessage('목적지를 검색하는 중입니다...');
 
     const places = new kakao.maps.services.Places();
     places.keywordSearch(query, (results, status) => {
       setIsSearching(false);
 
       if (status !== kakao.maps.services.Status.OK || !results?.length) {
-        setMessage('No destination found. Try another keyword.');
+        setMessage('검색 결과가 없습니다. 다른 키워드로 검색해주세요.');
         return;
       }
 
@@ -197,7 +197,7 @@ export default function MapContainer({ setSelectedParking }) {
       currentMarkerRef.current = new kakao.maps.Marker({
         position: center,
         map,
-        title: 'Current location',
+        title: '현재 위치',
       });
     };
 
@@ -218,7 +218,7 @@ export default function MapContainer({ setSelectedParking }) {
 
     const bootKakaoMap = (centerPoint) => {
       if (!window.kakao?.maps) {
-        setMessage('Kakao Maps SDK failed to load.');
+        setMessage('카카오 지도를 불러오지 못했습니다.');
         return;
       }
 
@@ -250,17 +250,17 @@ export default function MapContainer({ setSelectedParking }) {
 
   return (
     <main className="map-container">
-      <section className="map-panel" aria-label="parking map">
+      <section className="map-panel" aria-label="주차장 지도">
         <form className="destination-search" onSubmit={handleSearchSubmit}>
           <input
             type="search"
             value={keyword}
             onChange={(event) => setKeyword(event.target.value)}
-            placeholder="Search destination"
-            aria-label="Destination"
+            placeholder="목적지를 검색하세요"
+            aria-label="목적지"
           />
           <button type="submit" disabled={isSearching}>
-            {isSearching ? '...' : 'Search'}
+            {isSearching ? '...' : '검색'}
           </button>
         </form>
 

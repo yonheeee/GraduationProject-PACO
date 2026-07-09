@@ -12,26 +12,26 @@ export default function BottomSheet({ parking, onClose }) {
 
   return (
     <aside className="bottom-sheet">
-      <button type="button" className="sheet-close" onClick={onClose} aria-label="Close">
+      <button type="button" className="sheet-close" onClick={onClose} aria-label="닫기">
         x
       </button>
-      <h2>{parking.name ?? parking.parkingName ?? 'Unnamed parking lot'}</h2>
-      <p className="sheet-address">{parking.address ?? parking.roadAddress ?? parking.addr ?? 'No address'}</p>
+      <h2>{parking.name ?? parking.parkingName ?? '이름 없는 주차장'}</h2>
+      <p className="sheet-address">{parking.address ?? parking.roadAddress ?? parking.addr ?? '주소 정보 없음'}</p>
       <dl className="parking-summary">
         <div>
-          <dt>Status</dt>
-          <dd>{parking.status ?? 'Unknown'}</dd>
+          <dt>혼잡도</dt>
+          <dd>{parking.status ?? '정보 없음'}</dd>
         </div>
         <div>
-          <dt>Spaces</dt>
+          <dt>잔여 좌석</dt>
           <dd>{formatSpaces(parking)}</dd>
         </div>
         <div>
-          <dt>Fee</dt>
-          <dd>{parking.fee ?? parking.parkingFee ?? parking.basicCharge ?? 'No fee info'}</dd>
+          <dt>요금</dt>
+          <dd>{parking.fee ?? parking.parkingFee ?? parking.basicCharge ?? '요금 정보 없음'}</dd>
         </div>
       </dl>
-      <button type="button" className="route-button">Route</button>
+      <button type="button" className="route-button">길찾기</button>
     </aside>
   );
 }

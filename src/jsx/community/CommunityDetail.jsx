@@ -17,8 +17,8 @@ export default function CommunityDetail() {
         const data = await ReviewApi.getReview(id);
         setReview(data);
       } catch (error) {
-        console.error('Failed to load review:', error);
-        setReview({ title: 'Review not found', content: 'The review API is not connected yet.' });
+        console.error('게시글을 불러오지 못했습니다:', error);
+        setReview({ title: '게시글을 찾을 수 없습니다', content: '리뷰 API가 아직 연결되지 않았습니다.' });
       } finally {
         setLoading(false);
       }
@@ -32,14 +32,14 @@ export default function CommunityDetail() {
       <Header />
       <article className="review-card" style={{ cursor: 'default' }}>
         {loading ? (
-          <p>Loading...</p>
+          <p>불러오는 중...</p>
         ) : (
           <>
             <h2 className="card-title">{review.title}</h2>
             <p className="content-preview">{review.content}</p>
             <div className="card-footer">
-              <button type="button" onClick={() => navigate('/community')}>Back</button>
-              <button type="button" onClick={() => navigate(`/community/edit/${id}`)}>Edit</button>
+              <button type="button" onClick={() => navigate('/community')}>목록</button>
+              <button type="button" onClick={() => navigate(`/community/edit/${id}`)}>수정</button>
             </div>
           </>
         )}
