@@ -20,7 +20,7 @@ export default function BottomSheet({ parking, onClose }) {
       <dl className="parking-summary">
         <div>
           <dt>혼잡도</dt>
-          <dd>{parking.status ?? '정보 없음'}</dd>
+          <dd>{parking.statusLabel ?? parking.status ?? '정보 없음'}</dd>
         </div>
         <div>
           <dt>잔여 좌석</dt>

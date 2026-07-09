@@ -217,3 +217,124 @@
     white-space: normal;
   }
 }
+.parking-list-panel {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 3;
+  max-height: 34%;
+  padding: 0.85rem;
+  border-radius: 0.95rem;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 14px 36px rgba(15, 23, 42, 0.18);
+  box-sizing: border-box;
+}
+
+.parking-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.65rem;
+  color: #0f172a;
+}
+
+.parking-list-header strong {
+  font-size: 0.95rem;
+}
+
+.parking-list-header span {
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.parking-card-list {
+  display: grid;
+  gap: 0.55rem;
+  max-height: 10.5rem;
+  overflow-y: auto;
+  padding-right: 0.15rem;
+}
+
+.parking-result-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    "status main"
+    "meta meta";
+  gap: 0.45rem 0.65rem;
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #e4ebf5;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color: #0f172a;
+  text-align: left;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.parking-result-card:focus-visible {
+  outline: 3px solid #003fbf;
+  outline-offset: 2px;
+}
+
+.parking-card-status {
+  grid-area: status;
+  align-self: start;
+  min-width: 2.4rem;
+  padding: 0.25rem 0.45rem;
+  border-radius: 999px;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  text-align: center;
+}
+
+.parking-card-main {
+  grid-area: main;
+  display: grid;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.parking-card-main strong {
+  overflow: hidden;
+  font-size: 0.9rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.parking-card-main span {
+  overflow: hidden;
+  color: #64748b;
+  font-size: 0.76rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.parking-card-meta {
+  grid-area: meta;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.65rem;
+  color: #475569;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.parking-card-meta span {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .parking-list-panel {
+    bottom: 0.75rem;
+    max-height: 36%;
+  }
+}
+

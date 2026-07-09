@@ -42,6 +42,14 @@ const getStatus = (parking) => {
   return 'BUSY';
 };
 
+const getStatusLabel = (status) => {
+  const normalized = String(status).toUpperCase();
+  if (['AVAILABLE', 'FREE', 'LOW'].includes(normalized)) return '여유';
+  if (['NORMAL', 'MEDIUM'].includes(normalized)) return '보통';
+  if (['BUSY', 'FULL', 'HIGH'].includes(normalized)) return '혼잡';
+  return '정보 없음';
+};
+
 const getMarkerColor = (status) => {
   const normalized = String(status).toUpperCase();
   if (['AVAILABLE', 'FREE', 'LOW'].includes(normalized)) return '#22a06b';
@@ -53,18 +61,23 @@ const getMarkerColor = (status) => {
 const normalizeParking = (parking) => {
   const remainParking = getRemain(parking);
   const totalParking = getTotal(parking);
+  const status = getStatus(parking);
 
   return {
     ...parking,
     id: parking.id ?? parking.parkingId ?? parking.pk ?? parking.name,
     name: parking.name ?? parking.parkingName ?? parking.prkplceNm ?? '이름 없는 주차장',
     address: parking.address ?? parking.roadAddress ?? parking.addr ?? parking.rdnmadr ?? parking.lnmadr ?? '주소 정보 없음',
-    status: getStatus(parking),
+    status,
+    statusLabel: getStatusLabel(status),
+    markerColor: getMarkerColor(status),
     remainParking: remainParking ?? '-',
     totalParking: totalParking ?? '-',
     fee: parking.fee ?? parking.parkingFee ?? parking.basicCharge ?? parking.price ?? '요금 정보 없음',
   };
 };
+
+const formatSpaces = (parking) => `${parking.remainParking} / ${parking.totalParking}`;
 
 export default function MapContainer({ setSelectedParking }) {
   const mapNodeRef = useRef(null);
@@ -75,6 +88,7 @@ export default function MapContainer({ setSelectedParking }) {
   const [message, setMessage] = useState('지도를 불러오는 중입니다...');
   const [keyword, setKeyword] = useState('');
   const [destination, setDestination] = useState(null);
+  const [parkingList, setParkingList] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
 
   const clearParkingMarkers = useCallback(() => {
@@ -82,19 +96,31 @@ export default function MapContainer({ setSelectedParking }) {
     parkingMarkersRef.current = [];
   }, []);
 
+  const focusParking = useCallback((parking) => {
+    const kakao = window.kakao;
+    const map = mapRef.current;
+    const position = getLatLng(parking);
+
+    setSelectedParking(parking);
+    if (!kakao?.maps || !map || !position || Number.isNaN(position.lat) || Number.isNaN(position.lng)) return;
+
+    const center = new kakao.maps.LatLng(position.lat, position.lng);
+    map.setCenter(center);
+    map.setLevel(3);
+  }, [setSelectedParking]);
+
   const addParkingMarkers = useCallback((kakao, map, parkings) => {
-    parkings.forEach((rawParking) => {
-      const position = getLatLng(rawParking);
+    parkings.forEach((parking) => {
+      const position = getLatLng(parking);
       if (!position || Number.isNaN(position.lat) || Number.isNaN(position.lng)) return;
 
-      const parking = normalizeParking(rawParking);
       const markerButton = document.createElement('button');
       markerButton.type = 'button';
       markerButton.className = 'kakao-parking-marker';
-      markerButton.style.background = getMarkerColor(parking.status);
+      markerButton.style.background = parking.markerColor;
       markerButton.textContent = 'P';
       markerButton.setAttribute('aria-label', parking.name);
-      markerButton.addEventListener('click', () => setSelectedParking(parking));
+      markerButton.addEventListener('click', () => focusParking(parking));
 
       const marker = new kakao.maps.CustomOverlay({
         position: new kakao.maps.LatLng(position.lat, position.lng),
@@ -105,23 +131,26 @@ export default function MapContainer({ setSelectedParking }) {
       marker.setMap(map);
       parkingMarkersRef.current.push(marker);
     });
-  }, [setSelectedParking]);
+  }, [focusParking]);
 
   const loadParkings = useCallback(async (kakao, map, center) => {
     clearParkingMarkers();
+    setParkingList([]);
 
     try {
       const payload = await ParkingApi.getNearbyParkings({
         lat: center.getLat(),
         lng: center.getLng(),
       });
-      const parkings = getParkingList(payload);
+      const parkings = getParkingList(payload).map(normalizeParking);
 
+      setParkingList(parkings);
       addParkingMarkers(kakao, map, parkings);
       setMessage(parkings.length > 0 ? '' : '표시할 주차장 데이터가 없습니다.');
     } catch (error) {
       console.error('Failed to load parking data:', error);
       setMessage('주차장 API가 아직 연결되지 않아 지도만 표시합니다.');
+      setParkingList([]);
     }
   }, [addParkingMarkers, clearParkingMarkers]);
 
@@ -273,6 +302,37 @@ export default function MapContainer({ setSelectedParking }) {
 
         <div ref={mapNodeRef} className="kakao-map" />
         {message && <div className="map-status-message">{message}</div>}
+
+        {parkingList.length > 0 && (
+          <section className="parking-list-panel" aria-label="주차장 목록">
+            <div className="parking-list-header">
+              <strong>주변 주차장</strong>
+              <span>{parkingList.length}곳</span>
+            </div>
+            <div className="parking-card-list">
+              {parkingList.map((parking) => (
+                <button
+                  key={parking.id}
+                  type="button"
+                  className="parking-result-card"
+                  onClick={() => focusParking(parking)}
+                >
+                  <span className="parking-card-status" style={{ background: parking.markerColor }}>
+                    {parking.statusLabel}
+                  </span>
+                  <span className="parking-card-main">
+                    <strong>{parking.name}</strong>
+                    <span>{parking.address}</span>
+                  </span>
+                  <span className="parking-card-meta">
+                    <span>잔여 {formatSpaces(parking)}</span>
+                    <span>{parking.fee}</span>
+                  </span>
+                </button>
+              ))}
+            </div>
+          </section>
+        )}
       </section>
     </main>
   );
