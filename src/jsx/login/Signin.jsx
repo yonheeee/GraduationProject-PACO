@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import LoginPage from '../login/LoginPage';
 import '../../css/login/Signin.css';
 
-import Eye from '../../images/login/eye.svg';
-import CloseEye from '../../images/login/closeeye.svg';
 
 import AuthApi from "../../api/Auth/Auth";
 

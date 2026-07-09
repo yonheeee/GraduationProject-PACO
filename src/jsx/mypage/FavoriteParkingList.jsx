@@ -39,6 +39,8 @@ const FavoriteParkingList = () => {
             }
         };
         fetchLikes();
+    // DUMMY_DETAILS is static placeholder data until the parking detail API is connected.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleCardClick = (parkingId) => {

@@ -1,0 +1,154 @@
+﻿.community-container {
+  min-height: 100vh;
+  background: #f6f8fb;
+}
+
+.search-wrapper,
+.category-tabs,
+.review-feed {
+  width: 90%;
+  max-width: 35vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.search-wrapper {
+  padding: 1rem 0 0.75rem;
+}
+
+.search-input {
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 1rem;
+  border: 1px solid #d9e2ef;
+  border-radius: 0.65rem;
+  box-sizing: border-box;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.75rem;
+}
+
+.tab-btn {
+  flex: 0 0 auto;
+  border: 1px solid #d9e2ef;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #475569;
+  padding: 0.55rem 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  border-color: #003fbf;
+  background: #003fbf;
+  color: #ffffff;
+}
+
+.review-feed {
+  display: grid;
+  gap: 0.85rem;
+  padding-bottom: 5.5rem;
+}
+
+.review-card {
+  width: 90%;
+  max-width: 35vw;
+  margin: 0.85rem auto;
+  padding: 1rem;
+  border: 1px solid #e4ebf5;
+  border-radius: 0.75rem;
+  background: #ffffff;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.card-title {
+  margin: 0 0 0.7rem;
+  color: #0f172a;
+  font-size: 1rem;
+}
+
+.content-preview {
+  color: #475569;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  align-items: center;
+  margin-top: 1rem;
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.review-tag {
+  color: #003fbf;
+  font-weight: 700;
+}
+
+.difficulty-section {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.7rem 0;
+}
+
+.diff-bar-bg {
+  flex: 1;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.diff-bar-fill {
+  height: 100%;
+  background: #003fbf;
+}
+
+.floating-write-btn {
+  position: fixed;
+  right: max(1rem, calc((100vw - 35vw) / 2 + 1rem));
+  bottom: 5rem;
+  border: 0;
+  border-radius: 999px;
+  background: #003fbf;
+  color: #ffffff;
+  padding: 0.8rem 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 63, 191, 0.24);
+}
+
+.no-reviews {
+  text-align: center;
+  color: #64748b;
+  padding: 2rem 0;
+}
+
+@media (max-width: 900px) {
+  .search-wrapper,
+  .category-tabs,
+  .review-feed,
+  .review-card {
+    max-width: 100%;
+  }
+
+  .floating-write-btn {
+    right: 1rem;
+  }
+}
